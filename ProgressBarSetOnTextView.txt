@@ -1,0 +1,48 @@
+package com.jksurajpuriya.jk;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    SeekBar seekBar;
+    TextView textView;
+
+    int currentProgress;
+    String minProgress="170";
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        seekBar=findViewById(R.id.seekBar);
+        textView=findViewById(R.id.textView);
+
+        seekBar.setMax(500);
+        seekBar.setProgress(170);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                currentProgress=progress;
+                minProgress=String.valueOf(currentProgress);
+                textView.setText(minProgress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+    }
+}
